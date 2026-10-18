@@ -1,0 +1,201 @@
+/* 1. SZÍNVÁLTOZÓK DEFINIÁLÁSA A PROJEKT TETEJÉN */
+:root {
+  --bg-dark: #0b0c10;        /* A mélyfekete alap háttér */
+  --bg-gradient-top: #160c1b; /* A fenti lilás átmenet */
+  --primary-color: #ff4500;   /* A HitJam ikonikus neon narancs színe */
+  --text-light: #ffffff;      /* Fehér szövegekhez */
+}
+
+/* Globális alapok felülírása a sötét, prémium háttérhez */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* A HitJam-Party fő mobil kerete */
+.app-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%; 
+  max-width: 450px; 
+  min-height: 90vh; 
+  background: linear-gradient(180deg, var(--bg-gradient-top) 0%, var(--bg-dark) 100%); 
+  padding: 30px 20px; 
+  box-sizing: border-box; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  box-shadow: 0 0 30px rgba(0,0,0,0.6); 
+  border-radius: 20px; 
+  margin: 10px auto; 
+  text-align: center;
+  color: var(--primary-color); 
+}
+
+/* HitJam gomb alapstílus */
+.hitjam-btn {
+  background: transparent;
+  color: inherit;
+  border: 2px solid currentColor;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.hitjam-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-dark);
+  box-shadow: 0 0 15px var(--primary-color);
+  transform: scale(1.02);
+}
+
+.hitjam-btn:active {
+  transform: scale(0.98);
+}
+
+/* Vészjóslóbb, pirosas dizájn megállításhoz */
+.hitjam-btn-logout {
+  color: #ff3333;
+  border: 2px dashed #ff3333;
+}
+
+.hitjam-btn-logout:hover {
+  background-color: #ff3333;
+  color: #0b0c10;
+  box-shadow: 0 0 15px rgba(255, 51, 51, 0.6);
+}
+
+/* Üzenet dobozok */
+.hitjam-alert {
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hitjam-alert-error {
+  background: rgba(255, 69, 0, 0.1);
+  border: 1px solid #ff4500;
+  color: #ff4500;
+}
+
+.hitjam-alert-success {
+  background: rgba(0, 255, 100, 0.1);
+  border: 1px solid #00ff64;
+  color: #00ff64;
+}
+
+/* Kvíz gombok elrendezése */
+.quiz-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin: 20px 0;
+}
+
+/* Egyedi nagy rádióadó gomb stílus */
+.quiz-btn {
+  background: rgba(0, 0, 0, 0.5);
+  color: inherit;
+  border: 2px solid rgba(255, 69, 0, 0.4);
+  padding: 20px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quiz-btn:hover {
+  border-color: #ff4500;
+  background: rgba(255, 69, 0, 0.1);
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+}
+
+.quiz-btn:active {
+  transform: scale(0.95);
+}
+
+/* Lábléc stílus */
+.hitjam-footer {
+  margin-top: auto;
+  padding-top: 15px;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  opacity: 0.4;
+  color: inherit;
+  border-top: 1px solid rgba(255, 69, 0, 0.1);
+  width: 100%;
+}
+
+/* HitJam-Party Videó Lejátszó Konténer */
+.hitjam-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Prémium szélesvásznú arány */
+  background: #000000;
+  
+  /* Lekerekített sarkok és dögös neon-orany izzás, pont mint a HitJam gomboknál */
+  border: 2px solid #ff4500;
+  border-radius: 20px; 
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(255, 69, 0, 0.4);
+  
+  /* Sima átmenet, amikor megjelenik a képernyőn */
+  animation: hitjam-fade-in 0.4s ease;
+}
+
+/* Az iframe teljesen kitölti a lekerekített konténert */
+.hitjam-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Finom megjelenési animáció */
+@keyframes hitjam-fade-in {
+  from { 
+    opacity: 0; 
+    transform: scale(0.96); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+.hitjam-input {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 69, 0, 0.3); /* Finom narancs keret */
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
