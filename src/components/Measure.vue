@@ -15,4 +15,7 @@ const measure = () => {
     <div>
         <button  class="hitjam-btn" v-on:click="measure">Measure</button>
     </div>
+    <div>
+        <button @click="measurementStore.resetMeasurements" class="hitjam-btn">Clear Measurement</button>
+    </div>
 </template>

@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { useAlmanachStore } from '../stores/almanachStore'
 
@@ -123,12 +123,38 @@ export const useMeasurementStore = defineStore('measurement', () => {
         };
 
     };
+    // Mérés 1 adatai (Ha nincs, null)
+    const measurement1 = computed(() => {
+        return measurements.value[0] || null
+    })
 
+    // Mérés 2 adatai (Ha nincs, null)
+    const measurement2 = computed(() => {
+        return measurements.value[1] || null
+    })
 
+    // Szépen formázott időpontok a kijelzőnek
+    const m1Time = computed(() => {
+        if (!measurement1.value) return 'Nincs mérés'
+        const date = new Date(measurement1.value.timestamp)
+        return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
+    })
+
+    const m2Time = computed(() => {
+        if (!measurement2.value) return 'Nincs mérés'
+        const date = new Date(measurement2.value.timestamp)
+        return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
+    })
+
+    // Ne felejtsd el hozzáadni a return objektumhoz mindet!
     return { 
         measurements,
+        currentPosition,
+        measurement1,
+        measurement2,
+        m1Time,
+        m2Time,
         addMeasurement,
-        resetMeasurements,
-        currentPosition
+        resetMeasurements
     }
 })

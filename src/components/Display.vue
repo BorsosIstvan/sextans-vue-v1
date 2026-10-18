@@ -1,43 +1,34 @@
 <script setup>
-import { useMeasurementStore } from '../stores/measurementStore'; // Let op het juiste pad!
-import { useAlmanachStore } from '@/stores/almanachStore';
-const almanachStore = useAlmanachStore();
-const measurementStore = useMeasurementStore();
+import { useMeasurementStore } from '../stores/measurementStore'
+const measurementStore = useMeasurementStore()
 </script>
 
 <template>
-    <div class="display" style="padding: 20px; font-family: monospace;">
-        <h2>Digitale Sextant Dashboard</h2>
+    <div class="display" style="padding: 20px; font-family: monospace; border: 1px solid #333; border-radius: 8px;">
+        <h3>📊 MÉRÉSI EREDMÉNYEK</h3>
         <hr />
 
-        <!-- STATUS 1: Nog geen metingen gedaan -->
-        <div v-if="measurementStore.measurements.length === 0">
-            <p><strong>Status:</strong> Geen actieve metingen.</p>
-            <p>Richt de zijkant van je telefoon op de zon en druk op de meetknop.</p>
+        <!-- 1. MÉRÉS -->
+        <div style="margin-bottom: 15px;">
+            <h4>1. Mérés adatai:</h4>
+            <p>Időpont: {{ measurementStore.m1Time }}</p>
+            <p>Szög: {{ measurementStore.measurement1 ? measurementStore.measurement1.altitude + '°' : '0°' }}</p>
         </div>
+        <hr />
 
-        <!-- STATUS 2: Eerste meting is gedaan -->
-        <div v-else-if="measurementStore.measurements.length === 1">
-            <p style="color: orange;"><strong>Status: Eerste meting vastgelegd!</strong></p>
-            <p><strong>Tijdstip:</strong> {{ measurementStore.measurements[0].timestamp }}</p>
-            <p><strong>Tijdstip:</strong> {{ almanachStore.geographicPosition }}</p>
-            <p><strong>Geregistreerde Zonshoek:</strong> {{ measurementStore.measurements[0].altitude }}°</p>
-            <p><em>Wacht nu tot de zon verder is gedraaid (2-3 uur) voor de tweede meting.</em></p>
+        <!-- 2. MÉRÉS -->
+        <div style="margin-bottom: 15px;">
+            <h4>2. Mérés adatai:</h4>
+            <p>Időpont: {{ measurementStore.m2Time }}</p>
+            <p>Szög: {{ measurementStore.measurement2 ? measurementStore.measurement2.altitude + '°' : '0°' }}</p>
         </div>
+        <hr />
 
-        <!-- STATUS 3: Beide metingen zijn voltooid -->
-        <div v-else-if="measurementStore.measurements.length === 2">
-            <p style="color: green;"><strong>Status: Beide metingen succesvol voltooid!</strong></p>
-            <p>Meting 1 Hoek: {{ measurementStore.measurements[0].altitude }}°</p>
-            <p>Meting 2 Hoek: {{ measurementStore.measurements[1].altitude }}°</p>
-            <hr />
-            <p><strong>Berekening:</strong> jouw exacte GPS-locatie: {{ measurementStore.currentPosition }}</p>
-        </div>
-
-        <!-- Extra knop om de metingen te resetten en opnieuw te beginnen -->
-        <div v-if="measurementStore.measurements.length > 0" style="margin-top: 20px;">
-            <button @click="measurementStore.resetMeasurements" class="hitjam-btn">Clear Measurement</button>
+        <!-- SZÁMÍTOTT GPS POZÍCIÓ -->
+        <div style="margin-top: 20px; background: #222; padding: 15px; border-radius: 5px;">
+            <h4>📍 Számított GPS pozíció:</h4>
+            <p>Szélesség (LAT): <strong>{{ measurementStore.currentPosition.lat ? measurementStore.currentPosition.lat.toFixed(4) + '°' : '0' }}</strong></p>
+            <p>Hosszúság (LNG): <strong>{{ measurementStore.currentPosition.lng ? measurementStore.currentPosition.lng.toFixed(4) + '°' : '0' }}</strong></p>
         </div>
     </div>
 </template>
-
