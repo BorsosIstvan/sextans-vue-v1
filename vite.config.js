@@ -11,9 +11,9 @@ export default defineConfig({
       registerType: 'autoUpdate', // 'prompt'
       injectRegister: 'inline',
       manifest : {
-        name: 'HitJamRadio',
-        short_name: 'HitJam',
-        description: 'Egyedi, reklámmentes internetes rádió autós módhoz',
+        name: 'Sextant',
+        short_name: 'Sextant',
+        description: 'GPS without satelit and network',
         theme_color: '#0b0c10',
         background_color: '#0b0c10',
         display: 'standalone',
