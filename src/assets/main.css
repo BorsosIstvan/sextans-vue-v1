@@ -13,9 +13,6 @@ html, body {
   background-color: var(--bg-dark);
   font-family: 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* A HitJam-Party fő mobil kerete */
@@ -35,7 +32,8 @@ html, body {
   border-radius: 20px; 
   margin: 10px auto; 
   text-align: center;
-  color: var(--primary-color); 
+  color: var(--primary-color);
+  flex-shrink: 0; /* Megakadályozza, hogy a flexbox összenyomja a konténert */
 }
 
 /* HitJam gomb alapstílus */
