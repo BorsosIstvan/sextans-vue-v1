@@ -42,7 +42,12 @@ export const useMeasurementStore = defineStore('measurement', () => {
         localStorage.removeItem("hitjam_measurements");
     };
 
-    const currentPosition = ref({ lat: 0, lng: 0 });
+    const currentPosition = ref(
+        localStorage.getItem("hitjam_last_position")
+            ? JSON.parse(localStorage.getItem("hitjam_last_position"))
+            : { lat: 0, lng: 0 }
+    )
+
 
     const calculateCurrentPosition = () => {
         if (measurements.value.length < 2) return;
@@ -121,6 +126,7 @@ export const useMeasurementStore = defineStore('measurement', () => {
             lat: lat1,
             lng: finalLng1
         };
+        localStorage.setItem("hitjam_last_position", JSON.stringify(currentPosition.value));
 
     };
     // Mérés 1 adatai (Ha nincs, null)
