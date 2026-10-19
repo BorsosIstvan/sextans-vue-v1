@@ -33,8 +33,23 @@ html, body {
   margin: 10px auto; 
   text-align: center;
   color: var(--primary-color);
-  flex-shrink: 0; /* Megakadályozza, hogy a flexbox összenyomja a konténert */
 }
+/* Hajszálvékony neon narancs választóvonal az app-containeren belül */
+.app-container hr {
+  border: none;
+  height: 1px;
+  background-color: color-mix(in srgb, var(--primary-color) 40%, transparent);
+  width: 90%;
+  margin: 20px auto;
+}
+
+.display {
+  border: 1px solid color-mix(in srgb, var(--primary-color) 40%, transparent);
+  border-radius: 20px;
+  margin: 20px 0;
+  padding: 15px;
+}
+
 
 /* HitJam gomb alapstílus */
 .hitjam-btn {
@@ -196,4 +211,23 @@ html, body {
   border-radius: 15px;
   outline: none;
   transition: border-color 0.2s ease;
+}
+
+.app-container button {
+  background: transparent;
+  color: inherit;
+  border: 2px solid currentColor;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
 }

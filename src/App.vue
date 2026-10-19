@@ -1,7 +1,9 @@
 <script setup>
 import Display from './components/Display.vue';
+import Footer from './components/Footer.vue';
 import GyroscopeTest from './components/GyroscopeTest.vue';
 import GyroToggle from './components/GyroToggle.vue';
+import Logo from './components/Logo.vue';
 import Measure from './components/Measure.vue';
 import MeasureButton from './components/MeasureButton.vue';
 import SextantDeck from './components/SextantDeck.vue';
@@ -10,13 +12,11 @@ import SextantDeck from './components/SextantDeck.vue';
 
 <template>
   <div class="app-container">
-  <h1>Sextant</h1>
+  <Logo />
   <Display />
   <MeasureButton />
   <GyroToggle />
-  <p>
-    The offline GPS without satelit and network
-  </p>
+  <Footer />
   </div>
 </template>
 

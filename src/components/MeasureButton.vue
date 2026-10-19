@@ -19,15 +19,15 @@ const triggerMeasure = () => {
 </script>
 
 <template>
-    <div class="measure-action" v-if="gyroStore.isListening">
+    <div v-if="gyroStore.isListening">
         <!-- Kis méretben mutatjuk az élő szöget a gomb felett -->
-        <p style="font-family: monospace; font-size: 1.1rem; margin-bottom: 5px;">
+        <p>
             Aktuális szög: <strong>{{ gyroStore.beta }}°</strong>
         </p>
         
-        <button @click="triggerMeasure" class="hitjam-btn" >
+        <button @click="triggerMeasure">
             ☀️ LOCK / NAP MÉRÉSE
         </button>
-        <button @click="measurementStore.resetMeasurements" class="hitjam-btn">Clear Measurement</button>
+        <button @click="measurementStore.resetMeasurements">Clear Measurement</button>
     </div>
 </template>
